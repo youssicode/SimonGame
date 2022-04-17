@@ -23,43 +23,83 @@
     justify-content: center;
     flex-direction: column;
     font-family: monospace;
-    color: #b52b2b;
-
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-.controlPannel button {
-    width: 90px;
-    height: 40px;
-    margin-bottom: 20px;
-    font-size: 25px;
-}
-.screen {
-    width: 100px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    background-color: #610606;
-    color: red;
-    font-size: 40px;
-}
-.on-off {
+label {
     font-size: 18px;
     color: yellow;
     background-color: #000;
     padding: 5px;
-    margin-bottom: 20px;
     cursor: pointer;
+}
+.startWrapper {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+input {
+    width: 25px;
+    height: 25px;
+    margin: 5px;
 }
 .wrapper > div {
     width: 300px;
     height: 300px;
     border: 5px solid #000;
 }
-.wrapper .key.anim {
-opacity: .5;
+.controlPannel button {
+    width: 90px;
+    height: 40px;
+    font-size: 25px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+.screen {
+    width: 135px;
+    height: 55px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #610606;
+    color: red;
+    font-size: 36px;
+    margin: 10px;
+}
+.switcher {
+    position: relative;
+    background-color: #afa7a7;
+    width: 92px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 5px;
+    padding-right: 6px;
+    padding-left: 12px;    
+    overflow: hidden;
+    box-shadow: inset 2px 2px 4px #565454;
+    border: 1px solid #625656;
+}
+.switcher p {
+    font-size: 20px;
+    font-family: monospace;
+}
+.on-off {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 4px 1px;
+    background: radial-gradient(#ccc 62%, black);
+    cursor: pointer;
+    transition: all 400ms;
+}
+.on-off.move {
+    left: 50%;
 }
 .green {
     background-color: green;
@@ -67,19 +107,28 @@ opacity: .5;
     border-bottom: none !important;
     border-right: none !important;
 }
+.green.anim {
+    background: radial-gradient(#aaf469 10%,lime 44%, green);}
 .blue {
     background-color: blue;
     border-top-right-radius: 100%;
-    
+}
+.blue.anim {
+    background: radial-gradient(#9ea5ff 10%,#607cd9  33%, blue);
 }
 .red {
-    background-color: red;
+    background-color: #b53333;
     border-bottom-right-radius: 100%;
     border-top: none !important;
-    border-left: none !important;
-    
+    border-left: none !important; 
+}
+.red.anim {
+    background: radial-gradient(#e09797,red 35%, #b53333);
 }
 .yellow {
-    background-color: yellow;
+    background-color: #e3d02f;
     border-bottom-left-radius: 100%;
+}
+.yellow.anim {
+    background: radial-gradient(#f1f1a1,#f6f633 30%, #ceb900);
 }

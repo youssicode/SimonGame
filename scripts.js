@@ -1,56 +1,89 @@
+let OnOffBtn = document.querySelector(".on-off")
+let gameOn = false
+OnOffBtn.onclick = ()=>{
+    OnOffBtn.classList.toggle("move")
+    gameOn == false? gameOn = true : initialise() // Start or Finish the game
+}
 
 let start = document.querySelector("button")
+start.addEventListener("click",function () {
+    if (gameOn == false) return // Control if the game is On
+    MachineSequence() // Call Machine playing
+    this.disabled = true // Disable "Start" button when playing
+})
+
 let screen = document.querySelector(".screen")
-let OnOff = document.querySelector(".on-off")
-let sound = new Audio("./3.wav")
-
 let sequence = []
-let tour = 0
-let gameOn = false
-
-OnOff.onclick = ()=>{
-    if (gameOn == false) {
-        gameOn = true
-        OnOff.innerText = "Game On"
-    }else{
-        initialise()
-    }
-}
-
-function initialise() {
-    OnOff.innerText = "Game Off"
-    screen.innerText = "--"
-    gameOn = false
-    sequence = []
-    tour = 0
-    j = 0
-
-}
-
-start.addEventListener("click",MachineSequence)
-
+let round = 0
 function MachineSequence() {
-    if (gameOn == false) return
-    if (tour == 5) {
+    if (round == 10) { // Player win after 10 rounds & game-over
         initialise()
         alert("You Win!")
         return
     }
-    screen.innerText = ++tour
+    ++round
+    screen.innerText = round.toString().padStart(2, '0')
+    //Save Random Sequences
     let rndm = Math.ceil(Math.random()*4)
     sequence.push(rndm)
+    // Use setInterval() as loop to play playSeq() Function many times with 1s interval
+    let intervalID = setInterval(playSeq, 1000);  
     let i = 0
-    let intervalID = setInterval(playSeq, 1000);
     function playSeq() {
         let cible = document.querySelector(`[data-keynbr="${sequence[i]}"`)
         animBtn(cible)
         i++      
+        // Stop setInterval() if Machine reach sequences' end 
         if (i == sequence.length) {
             clearInterval(intervalID)
         }
     }
 }
 
+// Player Turn
+let btns = document.querySelectorAll(".key")
+let sModeBtn = document.querySelector("input[name='sMode']")
+
+let j = 0
+btns.forEach(el => {
+    el.addEventListener("click", function () {
+        if (gameOn == false) return 
+        if (this.dataset.keynbr == sequence[j]) { // if actual sequence match the correct button/key
+            animBtn(this)
+            j++   // move to the next sequence
+            // Machine turn  
+            if (j == sequence.length) {
+                j = 0
+                setTimeout(() => {MachineSequence()}, 1500);
+            }
+        }
+        else {
+            if (sModeBtn.checked) { // Strict mode
+                alert("Game Over")
+                initialise()
+                return
+            } else {
+                //if player click on the wrong key, display "False" for a short time
+                screen.innerText = "False" 
+                setTimeout(() => {screen.innerText = round.toString().padStart(2, '0')}, 700);
+            }
+            
+        }
+    })
+})
+
+function initialise() {
+    OnOffBtn.classList.remove("move")
+    start.disabled = false
+    screen.innerText = "--"
+    sModeBtn.checked = false
+    gameOn = false
+    sequence = []
+    round = 0
+    j = 0
+}
+
+let sound = new Audio("./3.wav")
 function animBtn(btn) {
     btn.classList.add("anim") 
     sound.play()
@@ -58,31 +91,3 @@ function animBtn(btn) {
         btn.classList.remove("anim") 
     }, 500);
 }
-// Player Sequence
-let btns = document.querySelectorAll(".key")
-let j = 0
-btns.forEach(el => {
-    el.addEventListener("click", function () {
-        if (gameOn == false) return 
-        if (this.dataset.keynbr == sequence[j]) {
-            animBtn(this)
-            j++     
-            if (j == sequence.length) {
-                j = 0
-                setTimeout(() => {MachineSequence()}, 1500);
-            }
-        }
-        else {
-            screen.innerText = "No"
-
-        }
-    })
-})
-
-// let conso = document.querySelector(".consol")
-// function console() {
-//     conso.innerHTML = `sequence Array = ${sequence} <br>`
-//     conso.innerHTML += `j = ${j} <br>`
-//     conso.innerHTML += `sequence[j] = ${sequence[j]}`
-
-// }
