@@ -7,7 +7,7 @@ Thanks for checking out this front-end coding mini-project.
 ## Table of contents
 
 - [The Project](#the-project)
-- [Project's Links](#links)
+- [Project's Links](#Project's-links)
 - [My process](#my-process)
 - [Built with](#built-with)
 - [What I learned](#what-i-learned)
