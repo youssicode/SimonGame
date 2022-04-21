@@ -5,7 +5,7 @@ OnOffBtn.onclick = ()=>{
     gameOn == false? gameOn = true : initialise() // Start or Finish the game
 }
 
-let start = document.querySelector("button")
+let start = document.querySelector("button.start-btn")
 start.addEventListener("click",function () {
     if (gameOn == false) return // Control if the game is On
     MachineSequence() // Call Machine playing
