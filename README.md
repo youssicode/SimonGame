@@ -7,7 +7,7 @@ Thanks for checking out this front-end coding mini-project.
 ## Table of contents
 
 - [The Project](#the-project)
-- [Project's Links](#Project's-links)
+- [Project's Links](#links)
 - [My process](#my-process)
 - [Built with](#built-with)
 - [What I learned](#what-i-learned)
@@ -20,7 +20,7 @@ Thanks for checking out this front-end coding mini-project.
 - Imitating the real game design and functionalities using HTML/CSS/JavaScript
   ![Physical/Real Game preview](./Simon_Electronic_Game.jpg)
 
-### Project's Links
+### Links
 
 - The Project Repo URL: (https://github.com/youssicode/SimonGame)
 - Live Site URL: (https://youssicode.github.io/SimonGame/)
