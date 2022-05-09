@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+body {
+    font-family: monospace;
+}
 .wrapper {
         position: relative;
         width: 600px;
@@ -22,7 +25,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: monospace;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -84,7 +86,6 @@ input {
 }
 .switcher p {
     font-size: 20px;
-    font-family: monospace;
 }
 .on-off {
     position: absolute;
@@ -131,4 +132,8 @@ input {
 }
 .yellow.anim {
     background: radial-gradient(#f1f1a1,#f6f633 30%, #ceb900);
+}
+footer {
+    margin-top: 50px;
+    text-align: center;
 }
